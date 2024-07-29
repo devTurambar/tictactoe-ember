@@ -1,0 +1,36 @@
+{{yield}}
+<div class="form">
+    <div>
+        <label for="playerX">Player X</label>
+        <input
+            id="playerX"
+            type="text"
+            value={{this.gameInitialData.gameInfo.playerX}}
+            {{on "input" this.gameInitialData.setX}}
+            title="Player X"
+            autocomplete="off"
+        >
+    </div>
+    <div>
+        <label for="playerO">Player O</label>
+        <input
+            id="playerO"
+            type="text"
+            value={{this.gameInitialData.gameInfo.playerO}}
+            {{on "input" this.gameInitialData.setO}}
+            title="Player O"
+            autocomplete="off"
+        />
+    </div>
+    <div>
+        <span>First to play:</span>
+        <label>X<input type="radio" name="first" value="X" {{on "click" this.gameInitialData.setFirst}} checked /></label>
+        <label>O<input type="radio" name="first" value="O" {{on "click" this.gameInitialData.setFirst}} /></label>
+    </div>
+    <LinkTo @route="game">
+        <button type="button" class="maincta">Let's go!</button>
+    </LinkTo>
+    <LinkTo @route="home">
+        <button type="button" class="maincta">Home page</button>
+    </LinkTo>
+</div>

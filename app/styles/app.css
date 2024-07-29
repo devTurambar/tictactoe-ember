@@ -1,1 +1,251 @@
+/* @import url('/assets/fonts/Moonhouse-yE5M.ttf'); */
+@font-face {
+  font-family: Moonhouse;
+  src: url("/fonts/Moonhouse-yE5M.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: Swansea;
+  src: url("/fonts/SwanseaBold-D0ox.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: DragonHunter;
+  src: url("/fonts/DragonHunter-9Ynxj.otf") format("truetype");
+}
+
+@font-face {
+  font-family: CombackHomeRegular;
+  src: url("/fonts/CombackHomeRegular-jEMd9.ttf") format("truetype");
+}
+
 /* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+:root {
+  --board-width: 300px;
+  --board-height: 300px;
+  --colorBG: #000;
+  --colorContent: #f106db;
+  --colorContent2: #1df2dd;
+
+  background-color: var(--colorBG);
+  color: var(--colorContent);
+  font-family: Moonhouse, Fallback, sans-serif;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+#home {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+#home #banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+#home #banner div {
+  font-size: 2.25rem;
+}
+
+#home #banner span {
+  color: var(--colorContent2);
+}
+
+#home img {
+  width: 200px;
+}
+
+h1 span {
+  color: var(--colorContent2);
+}
+
+/* Start game form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+label {
+  margin-right: 1rem;
+}
+
+/* END of Start game form */
+
+/* Board setup */
+#bord-container {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: var(--board-width);
+  height: var(--board-height);
+  cursor: pointer;
+  color: var(--colorContent);
+}
+
+#board.disabled {
+  cursor: unset;
+}
+
+.square {
+  width: calc(var(--board-width) / 3);
+  height: calc(var(--board-height) / 3);
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vertical {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-color: var(--colorContent);
+}
+
+.horizontal {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-color: var(--colorContent);
+}
+
+/* END of Board setup */
+
+/* Tables */
+#gameInfo,
+#stats {
+  border-collapse: collapse;
+}
+
+tr {
+  font-family: DragonHunter, Fallback, sans-serif;
+}
+
+#gameInfo tr {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+#stats tr {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(60px, 120px));
+}
+
+.header-table-bg {
+  background-color: var(--headertableBG);
+  font-weight: 800;
+}
+
+#gameInfo td,
+#stats td {
+  border: 1px solid var(--colorContent);
+  padding: 8px;
+}
+
+.right-secton {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.result {
+  font-size: 2.5rem;
+}
+
+/* END of Game Info */
+
+/* Buttons */
+button {
+  background-color: var(--colorContent);
+  border-color: var(--colorContent);
+  cursor: pointer;
+  border-width: 2px;
+  font-weight: 800;
+  font-family: Swamsea, Fallback, sans-serif;
+  color: var(--colorContent2);
+  border-radius: 1000px;
+}
+
+button:hover {
+  background-color: var(--colorContent2);
+  color: var(--colorContent);
+}
+
+#home button,
+.maincta {
+  width: 200px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.maincta.fetch {
+  font-size: 0.9rem;
+}
+
+.history-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 1rem;
+}
+
+#home .buttons-container {
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (width <= 647px) {
+  .buttons-container,
+  #bord-container,
+  #home {
+    flex-direction: column;
+  }
+
+  #stats tr {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(60px, 120px));
+  }
+}
+
+@media only screen and (width <= 450px) {
+  #stats tr {
+    font-size: 0.7rem;
+  }
+}
+
+.form button {
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* END of Buttons */
+
+.footernote{
+    padding-right: 1rem;
+    padding-left:1rem;
+    font-family: Swamsea, Fallback, sans-serif;
+}

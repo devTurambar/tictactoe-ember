@@ -1,0 +1,39 @@
+{{yield}}
+
+<div id="bord-container">
+    <div id="board" class={{if this.boardDisabled "disabled"}}>
+        {{#each this.board as |content index|}}
+            <Board::Square 
+                @classes="square {{if (this.isHorizontal index) "horizontal"}} {{if (this.isVertical index) "vertical"}}"
+                @index={{index}}
+                @content={{content}}
+                @squareClick={{ (fn this.handleClick index) }}
+            />
+        {{/each}}
+    </div>
+    <div class="right-secton">
+        <Board::Game-info
+            @x={{this.getPlayerName "X"}}
+            @o={{this.getPlayerName "O"}}
+            @turn={{this.getPlayerName this.turn}}
+            @movesPlayed={{this.movesPlayed}}
+        />
+        <div>
+            <button type="button" class="maincta" {{on "click" this.resetBoard}}>Reset Board</button>
+        </div>
+        <LinkTo @route="home">
+            <button type="button" class="maincta">Home page</button>
+        </LinkTo>
+    </div>
+</div>
+{{#if this.boardDisabled}}
+    {{#if this.winner}}
+        <div class="result">
+            {{this.getPlayerName this.turn}} WINS!!
+        </div>
+    {{else}}
+        <div class="result">
+            GAME TIED!!
+        </div>
+    {{/if}}
+{{/if}}

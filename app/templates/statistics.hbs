@@ -1,0 +1,23 @@
+{{page-title "Statistics"}}
+<h1>TIC TAC <span>TOE</span></h1>
+<h2>History</h2>
+<table id="stats">
+    <tr>
+        <StatsRow @classes="header-table-bg" @column1="Game" @column2="Winner"  @column3="Loser"  @column4="Draw"  @column5="Moves"/>
+        {{#each this.history as |content index|}}
+            <StatsRow @column1={{this.incrementOne index}} @column2={{content.winner}}  @column3={{content.loser}}  @column4={{content.draw}}  @column5={{content.moves}}/>
+        {{/each}}
+    </tr>
+</table>
+<div class="history-buttons">
+    <div class="buttons-container">
+        <button class="maincta fetch" type="button" {{on "click" this.getStats}}>Get/Refresh History</button>
+        <button class="maincta fetch" {{on "click" this.dummyDb}} type="button">Dummy history*</button>
+    </div>
+    <LinkTo @route="home">
+        <button class="maincta fetch" type="button">Home page</button>
+    </LinkTo>
+
+</div>
+<div class="footernote">*IF NOT CONNECT TO THE DATABASE, DISPLAYS DUMMY INFO ON THE TABLE</div>
+{{outlet}}

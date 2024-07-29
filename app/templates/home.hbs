@@ -1,0 +1,16 @@
+{{page-title "Home"}}
+<div id="home">
+    <div id="banner">
+        <div>TIC TAC <span>TOE</span></div>
+        <img src="/images/tictactoe.png"/>
+    </div>
+    <div class="buttons-container">
+        <LinkTo @route="pre-game">
+            <button type="button" {{on "click" this.restartInfo}}>New Game</button>
+        </LinkTo>
+        <LinkTo @route="statistics">
+            <button type="button">History</button>
+        </LinkTo>
+    </div>
+</div>
+{{outlet}}
